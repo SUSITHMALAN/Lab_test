@@ -22,9 +22,9 @@ const itemSchema = new mongoose.Schema(
       required: [true, "Description is required"],
       trim: true,
     },
-    barcode_number: {
+    availability_status: {
       type: String,
-      default: "",
+      default: "Available",
       trim: true,
     },
 

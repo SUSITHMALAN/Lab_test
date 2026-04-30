@@ -2,13 +2,13 @@ import { useState } from "react";
 
 function ItemForm({ initialValues, onSubmit, submitText }) {
   const [formData, setFormData] = useState(
-    initialValues || {
-      name: "",
-      category: "",
-      price: "",
-      description: "",
-      imageUrl: "",
-      barcode_number: "",
+    {
+      name: initialValues?.name || "",
+      category: initialValues?.category || "",
+      price: initialValues?.price || "",
+      description: initialValues?.description || "",
+      imageUrl: initialValues?.imageUrl || "",
+      availability_status: initialValues?.availability_status || "Available",
     }
   );
 
@@ -52,14 +52,17 @@ function ItemForm({ initialValues, onSubmit, submitText }) {
         onChange={handleChange}
         required
       />
-      <label htmlFor="barcode_number">Barcode Number</label>
-      <input
-        type="text"
-        id="barcode_number"
-        name="barcode_number"
-        value={formData.barcode_number}
+      <label htmlFor="availability_status">Availability Status</label>
+      <select
+        id="availability_status"
+        name="availability_status"
+        value={formData.availability_status}
         onChange={handleChange}
-      />
+      >
+        <option value="Available">Available</option>
+        <option value="Out of Stock">Out of Stock</option>
+        <option value="Discontinued">Discontinued</option>
+      </select>
 
       <label>Image URL</label>
       <input name="imageUrl" value={formData.imageUrl} onChange={handleChange} />
